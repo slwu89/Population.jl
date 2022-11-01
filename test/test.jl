@@ -75,12 +75,13 @@ struct data1{T}
 end
 
 function data1(x::overtype...)
-    keytype = ([typeof(xx.step) for xx in x]...,)
-    data1{typeof(keytype)}(keytype), typeof(keytype)
+    keytype = tuple([xx.step for xx in x]...)
+    println(keytype)
+    println(typeof(keytype))
+    data1{typeof(keytype)}(keytype)
 end
 
-data1(type1(5.0),type2(5), type1(10.0))
+y = data1(type1(5.0),type2(5), type1(10.0))
 
+y.key
 typeof(y)
-
-Tuple{Int64}(1)
